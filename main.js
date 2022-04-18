@@ -1,6 +1,8 @@
 let news = [];
 let menus = document.querySelectorAll(".menus button")
+let menusMobile = document.querySelectorAll(".menus-mobile button")
 menus.forEach((menu)=>menu.addEventListener("click", (event)=>getNewsByTopic(event) ));
+menusMobile.forEach((menu)=>menu.addEventListener("click", (event)=>getNewsByTopicMobile(event) ));
 
 
 const getLatestNews = async() =>{
@@ -17,6 +19,18 @@ const getLatestNews = async() =>{
 }
 
 const getNewsByTopic = async(event) =>{
+    
+    let topic = event.target.textContent.toLowerCase()
+    let url = new URL(`https://api.newscatcherapi.com/v2/latest_headlines?countries=KR&topic=${topic}&page_size=10`)
+    let header = new Headers({'x-api-key':'c0W4hUqTSQarVzUEC0GcrB80uYxPmI9jcExWZpNYuw4'})
+    let response = await fetch(url,{headers:header})
+    let data = await response.json();
+    news=data.articles
+
+    render()
+}
+
+const getNewsByTopicMobile = async(event) =>{
     
     let topic = event.target.textContent.toLowerCase()
     let url = new URL(`https://api.newscatcherapi.com/v2/latest_headlines?countries=KR&topic=${topic}&page_size=10`)

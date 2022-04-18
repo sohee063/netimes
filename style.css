@@ -83,6 +83,9 @@
     margin-left: 50px;
   }
   
+  .mobile{
+      padding: 10px;
+  }
   /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
   #main {
     transition: margin-left .5s;
@@ -92,8 +95,8 @@
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-width: 48rem) {
     .sidenav {padding-top: 60px;}
-    .sidenav button {font-size: 18px;
-    }
+    .sidenav button {font-size: 18px;}
+    .menus {display: none;}
   }
 
   @media screen and (min-width:49rem) {
